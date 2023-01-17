@@ -18,6 +18,8 @@ CREATE TABLE If NOT EXISTS `Employes`
     `ville` varchar(50) NOT NULL,
     `pays` varchar(50) NOT NULL,
     `permis` varchar(50) NOT NULL,
+    foreign key (id_etablissement) references Etablissements(id_etablissement),
+    foreign key (id_poste) references Postes(id_poste),
 )
 CREATE TABLE if NOT EXISTS `Etablissements`
 (
@@ -31,6 +33,7 @@ CREATE TABLE if NOT EXISTS `Etablissements`
     `site_web` varchar(50) NOT NULL,
     `id_responsable` int(11) NOT NULL,
     `nb_employes` int(11) NOT NULL,
+    foreign key (id_responsable) references Employes(id_employe),
 )
 CREATE TABLE if NOT EXISTS `Postes`
 (
@@ -38,6 +41,7 @@ CREATE TABLE if NOT EXISTS `Postes`
     `nom_poste` varchar(50) NOT NULL,
     `description` varchar(50) NOT NULL,
     `id_pole` int(11) NOT NULL,
+    foreign key (id_pole) references Poles(id_pole),
 )
 CREATE TABLE if NOT EXISTS `Poles`
 (
