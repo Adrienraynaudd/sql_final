@@ -24,7 +24,7 @@
                         </div>
                         <div class='card__content'>
                             <p class='card__category'>Entreprises</p>
-                            <h3 class='card__heading'> $nom </h3>
+                            <h3 class='card__heading'>$nom</h3>
                         </div>
                     </a>";
                 }
