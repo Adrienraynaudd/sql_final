@@ -7,10 +7,7 @@
 </head>
 <body>
     <div class="container">
-        <form action="employes.php" method="get">
-            <input type="text" name="search" placeholder="Rechercher un employé..." id="searchbar" onsubmit="Cleansearchbar()">
-            <input type="submit" value="Rechercher">
-        </form>
+        <input type="text" name="search" placeholder="Rechercher un employé..." id="searchbar" onsubmit="Cleansearchbar()" onkeyup="searchbar()">
         <form action="employes.php" method="get">
             <select name="tri" id="tri">
                 <option value="asc">A-Z</option>
@@ -27,7 +24,6 @@
         </form>
         <?php
         include '../config.php';
-        if (isset($_GET['tri'])  || isset($_GET['search'])) {
         if (isset($_GET['tri'])) {
             if ($_GET['tri'] == 'asc') {
                 $sql = "SELECT * FROM employes ORDER BY nom ASC";
@@ -53,11 +49,7 @@
             if ($_GET['tri'] == 'salaire_desc') {
                 $sql = "SELECT * FROM employes ORDER BY salaire DESC";
             }
-        }
-        if (isset($_GET['search'])) {
-            $sql = "SELECT * FROM employes WHERE nom LIKE '%" . $_GET['search'] . "%' OR prenom LIKE '%" . $_GET['search'] . "%'";
-        }
-         }else{
+        }else{
             $sql = "SELECT * FROM employes";
         }
         $result = $conn->query($sql);
@@ -117,6 +109,22 @@ function Cleansearchbar() {
   var search = document.getElementById("searchbar").value;
   search = search.replace(/[^a-zA-Z0-9@]+/g, '');
   document.getElementById("searchbar").value = search;
+}
+function searchbar(){
+    var search = document.getElementById("searchbar").value;
+    console.log(search);
+    //if the search element is contain in the name or the firstname of the employee show his card else hide it
+    var cards = document.getElementsByClassName("card");
+    for (var i = 0; i < cards.length; i++) {
+        var card = cards[i];
+        var name = card.getElementsByTagName("h3")[0].innerHTML;
+        var firstname = card.getElementsByTagName("h3")[1].innerHTML;
+        if (name.toLowerCase().includes(search.toLowerCase()) || firstname.toLowerCase().includes(search.toLowerCase())) {
+            card.style.display = "";
+        }else{
+            card.style.display = "none";
+        }
+    }
 }
 </script>
 </html>
