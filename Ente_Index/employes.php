@@ -26,6 +26,7 @@
         </form>
         <?php
         include '../config.php';
+        if (isset($_GET['tri'])  || isset($_GET['search'])) {
         if (isset($_GET['tri'])) {
             if ($_GET['tri'] == 'asc') {
                 $sql = "SELECT * FROM employes ORDER BY nom ASC";
@@ -54,7 +55,8 @@
         }
         if (isset($_GET['search'])) {
             $sql = "SELECT * FROM employes WHERE nom LIKE '%" . $_GET['search'] . "%' OR prenom LIKE '%" . $_GET['search'] . "%'";
-        }else{
+        }
+         }else{
             $sql = "SELECT * FROM employes";
         }
         $result = $conn->query($sql);
