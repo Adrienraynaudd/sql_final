@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once 'config.php';
 
 $username = SecurityCheck($conn, $_POST['username']);

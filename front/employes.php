@@ -24,6 +24,15 @@
             </select>
             <input type="submit" value="Trier">
             <a href="employes.php" style="color: #fff; text-decoration: none; background-color: #000; padding: 5px 10px; border-radius: 5px;">Réinitialiser</a>
+            <?php
+            session_start();
+            if (isset($_GET['nom'])) {
+                echo "<input type='button' value='Add Employes' onclick='window.location.href=\"../AddEmployes.php\"'>";
+                echo "<input type='button' value='deconnexion' onclick='window.location.href=\"../deconnexion.php\"'>";
+            }else{
+                echo "<input type='button' value='connexion' onclick='window.location.href=\"./loginhtml.php\"'>";
+            }
+            ?>
         </form>
         <?php
         include '../config.php';
@@ -73,6 +82,7 @@
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
+                $id = $row["id_employe"];
                 $nom = $row["nom"];
                 $prenom = $row["prenom"];
                 $responsable = $row["id_responsable"];
@@ -109,9 +119,14 @@
                         <p>Adresse mail : " . $row["adresse_mail"] . "</p>
                         <p>Adresse : " . $row["adresse_postale"] . "</p>
                         <p>Ville : " . $row["ville"] . "</p>
-                        <p>Salaire annuel : " . $row["salaire"] ." €</p>
-                        </div>
-                    </div>
+                        <p>Salaire annuel : " . $row["salaire"] . " €</p>
+                        </div>";
+                        if (isset($_SESSION['username'])){
+                            echo "<a href='../delete.php?id=" . $id . "'><button class='btn btn-danger'>Supprimer</button></a>";
+                        }else{
+                            echo "<a href='loginhtml.php'><button class='btn btn-danger'>login</button></a>";
+                        }
+                    echo"</div>
                 </div>";
             }
         }

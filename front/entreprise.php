@@ -42,7 +42,7 @@
             include '../config.php';
             $date = date("m-d");
             $sql = "SELECT * FROM employes WHERE date_naissance LIKE '%$date'";
-            $result = $conn->query($sql);
+            $esult = $conn->query($sql);
             if ($result->num_rows > 0) {
                 // output data of each row
                 while ($row = $result->fetch_assoc()) {
