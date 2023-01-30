@@ -9,7 +9,7 @@
 <!-- partial:index.partial.html -->
 <div class="login-box">
   <h2>Login</h2>
-  <form>
+  <form action="../login.php" method="post" autocomplete="off">
     <div class="user-box">
       <input type="text" name="username" required="">
       <label>Username</label>
@@ -18,13 +18,7 @@
       <input type="password" name="password" required="">
       <label>Password</label>
     </div>
-    <a onclick="window.location.href='../login.php'">
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      Submit
-    </a>
+    <input  type="submit" value="Register">
     <?php
     if (isset($_GET['erreur'])) {
         $err = $_GET['erreur']; // Get the error code

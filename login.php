@@ -31,7 +31,7 @@ function SecurityCheck($conn, $data)
             die("ERROR : couldn't connect properly to database : " . mysqli_connect_error());
         }
         $date = date("Y-m-d H:i:s", time());
-        $sql = "SELECT password FROM " . $table . " WHERE Name = '" . $name . "'";
+        $sql = "SELECT password FROM " . $table . " WHERE prenom = '" . $name . "'";
         if ($request = $conn->prepare($sql)) {
             $request->execute();
             $resultQuerry = $request->get_result();
