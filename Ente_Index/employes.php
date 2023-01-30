@@ -23,6 +23,7 @@
                 <option value="salaire">Salaire ascendant</option>
             </select>
             <input type="submit" value="Trier">
+            <a href="employes.php" style="color: #fff; text-decoration: none; background-color: #000; padding: 5px 10px; border-radius: 5px;">Réinitialiser</a>
         </form>
         <?php
         include '../config.php';
