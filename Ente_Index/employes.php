@@ -64,6 +64,22 @@
             while($row = $result->fetch_assoc()) {
                 $nom = $row["nom"];
                 $prenom = $row["prenom"];
+                $responsable = $row["id_responsable"];
+                $poste = $row["id_poste"];
+                $sql2 = "SELECT nom FROM employes WHERE id_employe = $responsable";
+                $result2 = $conn->query($sql2);
+                if ($result2->num_rows > 0) {
+                    while($row2 = $result2->fetch_assoc()) {
+                        $responsable = $row2["nom"] . " " . $row["prenom"];
+                    }
+                }
+                $sql3 = "SELECT nom_poste FROM postes WHERE id_poste = $poste";
+                $result3 = $conn->query($sql3);
+                if ($result3->num_rows > 0) {
+                    while($row3 = $result3->fetch_assoc()) {
+                        $poste = $row3["nom_poste"];
+                    }
+                }
                 echo "
                 <div class='card'>
                     <div class='face face1'>
@@ -75,7 +91,14 @@
                     </div>
                     <div class='face face2'>
                         <div class='content'>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cum cumque minus iste veritatis provident at.</p>
+                        <p>Poste : " . $poste . "</p>
+                        <p>Responsable : " . $responsable . "</p>
+                        <p>Date de naissance : " . $row["date_naissance"] . "</p>
+                        <p>Date d'embauche : " . $row["date_embauche"] . "</p>
+                        <p>Adresse mail : " . $row["adresse_mail"] . "</p>
+                        <p>Adresse : " . $row["adresse_postale"] . "</p>
+                        <p>Ville : " . $row["ville"] . "</p>
+                        <p>Salaire annuel : " . $row["salaire"] ." €</p>
                         </div>
                     </div>
                 </div>";
