@@ -60,7 +60,6 @@ body{
     padding: 0;
     color: #fff;
     text-align: center;
-    font-size: 1.5em;
 }
 
 .container .card .face.face2{
@@ -80,6 +79,7 @@ body{
 }
 
 .container .card .face.face2 .content p{
+    font-size: 14px;
     margin: 0;
     padding: 0;
 }

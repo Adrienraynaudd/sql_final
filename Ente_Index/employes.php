@@ -8,7 +8,7 @@
 <body>
     <div class="container">
         <form action="employes.php" method="get">
-            <input type="text" name="search" placeholder="Rechercher un employé...">
+            <input type="text" name="search" placeholder="Rechercher un employé..." id="searchbar" onsubmit="Cleansearchbar()">
             <input type="submit" value="Rechercher">
         </form>
         <form action="employes.php" method="get">
@@ -67,11 +67,11 @@
                 $prenom = $row["prenom"];
                 $responsable = $row["id_responsable"];
                 $poste = $row["id_poste"];
-                $sql2 = "SELECT nom FROM employes WHERE id_employe = $responsable";
+                $sql2 = "SELECT nom, prenom FROM employes WHERE id_employe = $responsable";
                 $result2 = $conn->query($sql2);
                 if ($result2->num_rows > 0) {
                     while($row2 = $result2->fetch_assoc()) {
-                        $responsable = $row2["nom"] . " " . $row["prenom"];
+                        $responsable = $row2["nom"] . " " . $row2["prenom"];
                     }
                 }
                 $sql3 = "SELECT nom_poste FROM postes WHERE id_poste = $poste";
@@ -111,7 +111,14 @@
         $conn->close();
         ?>
     </div>
-</body>
+</body> 
+<script>
+function Cleansearchbar() {
+  var search = document.getElementById("searchbar").value;
+  search = search.replace(/[^a-zA-Z0-9@]+/g, '');
+  document.getElementById("searchbar").value = search;
+}
+</script>
 </html>
 
 
