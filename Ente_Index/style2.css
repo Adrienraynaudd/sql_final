@@ -98,3 +98,35 @@ body{
     background: #333;
     color: #fff;
 }
+
+.filtre {
+    color: #FFFFFF;
+    position: absolute;
+    right: 1px;
+}
+
+.popFiltre {
+    background-color: #7d7979;
+    position: absolute;
+    right: 1px;
+    top: 50px;
+    width: 200px;
+    z-index: 5;
+    border-radius: 10px;
+}
+
+.close {
+    position: absolute;
+    top: 1em;
+    right: 1em;
+    width: 20px;
+    background: #ff0000a9;
+    height: 20px;
+    border-radius: 100px;
+}
+
+.divFiltre {
+    position: relative;
+    margin: 8px;
+    margin-top: 40px;
+}

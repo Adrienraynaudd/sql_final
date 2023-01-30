@@ -6,11 +6,15 @@
 
 </head>
 <body>
-    <div class="container">
+    <div class="container" id="container">
         <form action="employes.php" method="get">
             <input type="text" name="search" placeholder="Rechercher un employé...">
             <input type="submit" value="Rechercher">
         </form>
+        <div class="filtre" id="filtre">
+            Ξ Filtre
+            <script src="filtre.js"></script>
+        </div>
         <form action="employes.php" method="get">
             <select name="tri" id="tri">
                 <option value="asc">A-Z</option>
@@ -51,8 +55,7 @@
             if ($_GET['tri'] == 'salaire_desc') {
                 $sql = "SELECT * FROM employes ORDER BY salaire DESC";
             }
-        }
-        if (isset($_GET['search'])) {
+        }else if (isset($_GET['search'])) {
             $sql = "SELECT * FROM employes WHERE nom LIKE '%" . $_GET['search'] . "%' OR prenom LIKE '%" . $_GET['search'] . "%'";
         }else{
             $sql = "SELECT * FROM employes";
