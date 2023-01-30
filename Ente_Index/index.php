@@ -6,6 +6,11 @@
     <link rel="stylesheet" href="style1.css">
     <title>Entreprises</title>
 </head>
+<script>
+    function alerteAnniversaire(nom) {
+        alert("C'est l'anniversaire de l'employé " + nom);
+    }
+</script>
 
 <body>
     <section class="hero-section">
@@ -32,6 +37,21 @@
                 echo "0 results";
             }
             $conn->close();
+            ?>
+            <?php 
+            include '../config.php';
+            $date = date("m-d");
+            $sql = "SELECT * FROM employes WHERE date_naissance LIKE '%$date'";
+            $result = $conn->query($sql);
+            if ($result->num_rows > 0) {
+                // output data of each row
+                while ($row = $result->fetch_assoc()) {
+                    $nom = $row["prenom"] . " " . $row["nom"];
+                    echo "<script>alerteAnniversaire('$nom')</script>";
+                }
+            } else {
+                echo "0 results";
+            }
             ?>
         </div>
     </section>
