@@ -57,8 +57,18 @@
         if (isset($_GET['search'])) {
             $sql = "SELECT * FROM employes WHERE nom LIKE '%" . $_GET['search'] . "%' OR prenom LIKE '%" . $_GET['search'] . "%'";
         }
-         }else{
-            $sql = "SELECT * FROM employes";
+        } else {
+            if (isset($_GET['nom'])) {
+                if ($_GET['nom'] == 'Ankama-Dofus') {
+                    $sql = "SELECT * FROM employes WHERE id_etablissement = 1";
+                } else if ($_GET['nom'] == 'Ankama-Wakfu') {
+                    $sql = "SELECT * FROM employes WHERE id_etablissement = 2";
+                } else if ($_GET['nom'] == 'Ankama-Studios') {
+                    $sql = "SELECT * FROM employes WHERE id_etablissement = 3";
+                }
+            } else {
+                $sql = "SELECT * FROM employes";
+            }
         }
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {

@@ -23,7 +23,7 @@
                 // output data of each row
                 while ($row = $result->fetch_assoc()) {
                     $nom = $row["nom"];
-                    echo "<a class='card' href='#'>
+                    echo "<a class='card' href='http://localhost/front/employes.php?nom=$nom'>
                         <div class='card__background'
                             style='background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQB-cgI1KYZQ3r3Gwb1tTwhq37A_JsG2w2IkA&usqp=CAU)'>
                         </div>
