@@ -1,0 +1,4 @@
+DROP TABLE IF EXISTS `Employes`;
+DROP TABLE IF EXISTS `Etablissements`;
+DROP TABLE IF EXISTS `Postes`;
+DROP TABLE IF EXISTS `Poles`;
