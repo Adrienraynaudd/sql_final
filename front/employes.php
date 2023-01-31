@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="EmployesStyle.css">
-
 </head>
 <body>
     <div class="container" id="container">
+    <a href="http://localhost/sql_final/front/pageAccueil.php" class="button" style = "background-color: #000; color: #fff; text-decoration: none; padding: 5px 10px; border-radius: 5px;">Accueil</a>
     <input type="text" name="search" placeholder="Rechercher un employé..." id="searchbar" onsubmit="Cleansearchbar()" onkeyup="searchbar()">
         </form>
         <div class="filtre" id="filtre">
