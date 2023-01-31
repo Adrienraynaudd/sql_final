@@ -13,6 +13,15 @@
 </script>
 
 <body>
+        <?php
+            session_start();
+            if (isset($_SESSION['nom'])) {
+                echo "<input type='button' value='add_entreprise' onclick='window.location.href=\"../add_entreprise.php\"'>";
+                echo "<input type='button' value='deconnexion' onclick='window.location.href=\"../deconnexion.php\"'>";
+            }else{
+                echo "<input type='button' value='connexion' onclick='window.location.href=\"./loginhtml.php\"'>";
+            }
+            ?>
     <section class="hero-section">
         <div class="card-grid">
             <?php
