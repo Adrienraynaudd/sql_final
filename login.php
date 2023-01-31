@@ -9,7 +9,7 @@ if ($username !== "" && $password !== "") {
    $hash = $response;
    if (password_verify($password, $hash)) {
         $_SESSION['username'] = $username;
-       header('Location: ../front/entreprise.php');
+       header('Location: ../front/pageAccueil.php');
    } else {
        header('Location: ../front/loginhtml.php?erreur=2'); // Error code 2: wrong username or password
    }

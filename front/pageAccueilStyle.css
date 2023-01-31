@@ -1,9 +1,9 @@
-* {
+body {
     background-color: #4C92BA;
     display: flex; 
     align-items: center;
     margin: 0cm;
-  } 
+  }
 
 .column {   
     width: 400px;

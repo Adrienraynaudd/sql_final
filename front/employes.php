@@ -28,13 +28,14 @@
             <a href="employes.php" style="color: #fff; text-decoration: none; background-color: #000; padding: 5px 10px; border-radius: 5px;">Réinitialiser</a>
             <?php
             session_start();
-            if (isset($_GET['nom'])) {
+            if (isset($_SESSION['username'])) {
                 echo "<input type='button' value='Add Employes' onclick='window.location.href=\"../AddEmployes.php\"'>";
                 echo "<input type='button' value='deconnexion' onclick='window.location.href=\"../deconnexion.php\"'>";
             }else{
                 echo "<input type='button' value='connexion' onclick='window.location.href=\"./loginhtml.php\"'>";
             }
             ?>
+            <a href="./pageAccueil.php" class="button" style = "background-color: #000; color: #fff; text-decoration: none; padding: 5px 10px; border-radius: 5px;">Accueil</a>
         </form>
         <?php
         include '../config.php';
