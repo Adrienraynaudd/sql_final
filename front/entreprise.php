@@ -11,14 +11,6 @@
 <body>
        
     <section class="hero-section">
-    <?php
-            session_start();
-            if (isset($_SESSION['username'])) {
-                echo "<input type='button' value='add_entreprise' onclick='window.location.href=\"../add_entreprise.php\"'>";
-            }else{
-                echo "<input type='button' value='connexion' onclick='window.location.href=\"./loginhtml.php\"'>";
-            }
-            ?>
         <div class="card-grid">
             <?php
             include '../config.php';
