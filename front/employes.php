@@ -31,35 +31,57 @@
         </form>
         <?php
         include '../config.php';
-        if (isset($_GET['tri'])  || isset($_GET['search'])) {
-        if (isset($_GET['tri'])) {
-            if ($_GET['tri'] == 'asc') {
-                $sql = "SELECT * FROM employes ORDER BY nom ASC";
+        if(isset($_GET['Startdate']) || isset($_GET['Enddate']) || isset($_GET['genreMale']) || isset($_GET['genreFemale']) || isset($_GET['salaireMin']) || isset($_GET['salaireMax'])) {
+            $sql = "SELECT * FROM employes WHERE ";
+            if(isset($_GET['Startdate']) && $_GET['Startdate'] != "") {
+                $sql .= 'date_naissance >= "' . $_GET['Startdate'] . '"AND ';
             }
-            if ($_GET['tri'] == 'desc') {
-                $sql = "SELECT * FROM employes ORDER BY nom DESC";
+            if(isset($_GET['Enddate']) && $_GET['Enddate'] != "") {
+                $sql .= 'date_naissance <= "' . $_GET['Enddate'] . '"AND ';
             }
-            if ($_GET['tri'] == 'date_embauche') {
-                $sql = "SELECT * FROM employes ORDER BY date_embauche ASC";
+            if(isset($_GET['genreMale']) && $_GET['genreMale'] != "")  {
+                $sql .= 'genre = "' . $_GET['genreMale'] . '"AND ';
             }
-            if ($_GET['tri'] == 'date_embauche_desc') {
-                $sql = "SELECT * FROM employes ORDER BY date_embauche DESC";
+            if(isset($_GET['genreFemale']) && $_GET['genreFemale'] != "") {
+                $sql .= 'genre = "' . $_GET['genreFemale'] . '"AND ';
             }
-            if ($_GET['tri'] == 'date_naissance') {
-                $sql = "SELECT * FROM employes ORDER BY date_naissance ASC";
+            if (isset($_GET['salaireMin']) && $_GET['salaireMin'] != "" && isset($_GET['salaireMax']) && $_GET['salaireMax'] != "") {
+                $sql .= 'salaire BETWEEN ' . $_GET['salaireMin'] . ' AND '. $_GET['salaireMax'] . 'AND ';
+            }else if(isset($_GET['salaireMin']) && $_GET['salaireMin'] != "") {
+                $sql .= 'salaire >= ' . $_GET['salaireMin'] . 'AND ';
+            }else if(isset($_GET['salaireMax']) && $_GET['salaireMax'] != "") {
+                $sql .= 'salaire <= ' . $_GET['salaireMax'] . 'AND ';
             }
-            if ($_GET['tri'] == 'date_naissance_desc') {
-                $sql = "SELECT * FROM employes ORDER BY date_naissance DESC";
+            $sql = substr($sql, 0, -4);
+        }else if (isset($_GET['tri'])  || isset($_GET['search'])) {
+            if (isset($_GET['tri'])) {
+                if ($_GET['tri'] == 'asc') {
+                    $sql = "SELECT * FROM employes ORDER BY nom ASC";
+                }
+                if ($_GET['tri'] == 'desc') {
+                    $sql = "SELECT * FROM employes ORDER BY nom DESC";
+                }
+                if ($_GET['tri'] == 'date_embauche') {
+                    $sql = "SELECT * FROM employes ORDER BY date_embauche ASC";
+                }
+                if ($_GET['tri'] == 'date_embauche_desc') {
+                    $sql = "SELECT * FROM employes ORDER BY date_embauche DESC";
+                }
+                if ($_GET['tri'] == 'date_naissance') {
+                    $sql = "SELECT * FROM employes ORDER BY date_naissance ASC";
+                }
+                if ($_GET['tri'] == 'date_naissance_desc') {
+                    $sql = "SELECT * FROM employes ORDER BY date_naissance DESC";
+                }
+                if ($_GET['tri'] == 'salaire') {
+                    $sql = "SELECT * FROM employes ORDER BY salaire ASC";
+                }
+                if ($_GET['tri'] == 'salaire_desc') {
+                    $sql = "SELECT * FROM employes ORDER BY salaire DESC";
+                }
+            }else if (isset($_GET['search'])) {
+                $sql = "SELECT * FROM employes WHERE nom LIKE '%" . $_GET['search'] . "%' OR prenom LIKE '%" . $_GET['search'] . "%'";
             }
-            if ($_GET['tri'] == 'salaire') {
-                $sql = "SELECT * FROM employes ORDER BY salaire ASC";
-            }
-            if ($_GET['tri'] == 'salaire_desc') {
-                $sql = "SELECT * FROM employes ORDER BY salaire DESC";
-            }
-        }else if (isset($_GET['search'])) {
-            $sql = "SELECT * FROM employes WHERE nom LIKE '%" . $_GET['search'] . "%' OR prenom LIKE '%" . $_GET['search'] . "%'";
-        }
         } else {
             if (isset($_GET['nom'])) {
                 if ($_GET['nom'] == 'Ankama-Dofus') {
