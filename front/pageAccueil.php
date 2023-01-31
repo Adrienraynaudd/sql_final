@@ -17,8 +17,7 @@
         </div>
         <div class="Cubes_links">
             <div class="column" style="background-color: #32607A "><p>💼<br>&emsp;<br> Employés</p></div>
-            <div class="column" style="background-color:#32607A"><p>👔<br>&emsp;<br> Postes</p></div>
-            <div class="column" style="background-color:#32607A"><p>🏭<br>&emsp;<br> Etablissement</p></div>
+            <div class="column" style="background-color:#32607A"><p>🏭<br>&emsp;<br> Etablissements</p></div>
         </div>
     </body>
 </html>
