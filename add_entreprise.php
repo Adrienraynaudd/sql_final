@@ -1,6 +1,11 @@
 <?php
 include 'config.php';
 if (isset($_POST['submit'])) {
+    $longueurKey = 15;
+    $id_entreprise = "";
+    for ($i = 1; $i < $longueurKey; $i++) { //Generate a random key
+        $id_entreprise .= mt_rand(0, 9);
+    }
     $nom = $_POST['nom'];
     $id_etablissement = $_POST['id_etablissement'];
     $pays = $_POST['pays'];
@@ -9,7 +14,7 @@ if (isset($_POST['submit'])) {
     $nb_employe = $_POST['nb_employe'];
     $adresse = $_POST['adresse'];
     $id_responsable = $_POST['id_responsable'];
-    $sql = "INSERT INTO etablissement (nom, id_etablissement, pays, ville, code_postal, nb_employe, adresse, id_responsable) VALUES ('$nom', '$id_etablissement', '$pays', '$ville', '$code_postal', '$nb_employe', '$adresse', '$id_responsable')";
+    $sql = "INSERT INTO etablissement (id_etablissement,nom, pays, ville, code_postal, nb_employe, adresse, id_responsable) VALUES ('$id_etablissement'²,'$nom', '$pays', '$ville', '$code_postal', '$nb_employe', '$adresse', '$id_responsable')";
     if ($conn->query($sql) === TRUE) {
         echo "New record created successfully";
     } else {
@@ -30,8 +35,6 @@ if (isset($_POST['submit'])) {
         <input type="text" name="id" id="id"></br></br> -->
         <label for="nom">Nom de l'établissement</label>
         <input type="text" name="nom" id="nom"></br></br>
-        <label for="id_etablissement">Id</label>
-        <input type="text" name="id_etablissement" id="id_etablissement"></br></br>
         <label for="pays">Pays</label>
         <input type="text" name="pays" id="pays"></br></br>
         <label for="ville">Ville</label>
