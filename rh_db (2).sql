@@ -45,7 +45,8 @@ CREATE TABLE `employes` (
   `adresse_postale` varchar(255) NOT NULL,
   `ville` varchar(255) NOT NULL,
   `pays` varchar(255) NOT NULL,
-  `permis` tinyint(1) NOT NULL
+  `permis` tinyint(1) NOT NULL,
+  `password` varchar(255)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
