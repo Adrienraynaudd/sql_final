@@ -6,23 +6,19 @@
     <link rel="stylesheet" href="EntrepriseStyle.css">
     <title>Entreprises</title>
 </head>
-<script>
-    function alerteAnniversaire(nom) {
-        alert("C'est l'anniversaire de l'employé " + nom);
-    }
-</script>
+
 
 <body>
-        <?php
+       
+    <section class="hero-section">
+    <?php
             session_start();
-            if (isset($_SESSION['nom'])) {
+            if (isset($_SESSION['username'])) {
                 echo "<input type='button' value='add_entreprise' onclick='window.location.href=\"../add_entreprise.php\"'>";
-                echo "<input type='button' value='deconnexion' onclick='window.location.href=\"../deconnexion.php\"'>";
             }else{
                 echo "<input type='button' value='connexion' onclick='window.location.href=\"./loginhtml.php\"'>";
             }
             ?>
-    <section class="hero-section">
         <div class="card-grid">
             <?php
             include '../config.php';
@@ -51,7 +47,7 @@
             include '../config.php';
             $date = date("m-d");
             $sql = "SELECT * FROM employes WHERE date_naissance LIKE '%$date'";
-            $esult = $conn->query($sql);
+            $result = $conn->query($sql);
             if ($result->num_rows > 0) {
                 // output data of each row
                 while ($row = $result->fetch_assoc()) {
