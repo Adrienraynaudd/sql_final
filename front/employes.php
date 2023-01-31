@@ -28,7 +28,7 @@
             <a href="employes.php" style="color: #fff; text-decoration: none; background-color: #000; padding: 5px 10px; border-radius: 5px;">Réinitialiser</a>
             <?php
             session_start();
-            if (isset($_GET['nom'])) {
+            if (isset($_SESSION['nom'])) {
                 echo "<input type='button' value='Add Employes' onclick='window.location.href=\"../AddEmployes.php\"'>";
                 echo "<input type='button' value='deconnexion' onclick='window.location.href=\"../deconnexion.php\"'>";
             }else{
